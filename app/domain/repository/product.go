@@ -1,5 +1,7 @@
 package repository
 
+//go:generate mockgen -destination=./mock/mock_$GOFILE -source=$GOFILE -package=mock
+
 import (
 	"context"
 
@@ -9,6 +11,6 @@ import (
 type Product interface {
 	Create(ctx context.Context, obj *entity.Product) error
 	Update(ctx context.Context, obj *entity.Product) error
-	Get(ctx context.Context, id int) (entity.Product, error)
-	Find(ctx context.Context) ([]entity.Product, error)
+	Get(ctx context.Context, spec ISpecs) (entity.Product, error)
+	Find(ctx context.Context, spec ISpecs, paging entity.Paging) ([]entity.Product, error)
 }

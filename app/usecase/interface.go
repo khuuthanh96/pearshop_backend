@@ -1,14 +1,21 @@
 package usecase
 
+//go:generate mockgen -destination=./mock/mock_$GOFILE -source=$GOFILE -package=mock
+
 import (
 	"context"
 	"pearshop_backend/app/domain/entity"
+	"pearshop_backend/app/usecase/dto"
 )
 
 type ProductFind interface {
-	Execute(ctx context.Context) ([]entity.Product, error)
+	Execute(ctx context.Context, req dto.ProductFindRequest, paging entity.Paging) ([]entity.Product, error)
 }
 
-type ProductGet interface {
-	Execute(ctx context.Context, id int) (entity.Product, error)
+type ProductUpdate interface {
+	Execute(ctx context.Context, userID, productID int, req dto.ProductSaveRequest) (entity.Product, error)
+}
+
+type ProductCreate interface {
+	Execute(ctx context.Context, userID, req dto.ProductSaveRequest) (entity.Product, error)
 }

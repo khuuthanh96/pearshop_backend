@@ -1,0 +1,6 @@
+development:
+    dialect: mysql
+    datasource: admin:admin123@tcp(localhost:10000)/pearshop?parseTime=true
+    dir: migrations
+    table: schema_migrations ## table contains migration info
+
