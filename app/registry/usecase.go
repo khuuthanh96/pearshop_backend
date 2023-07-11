@@ -1,9 +1,9 @@
 package registry
 
 import (
-	"pearshop_backend/app/usecase"
-
 	"github.com/google/wire"
+
+	"pearshop_backend/app/usecase"
 )
 
 var (
@@ -11,5 +11,17 @@ var (
 		singletonSet,
 		repositorySet,
 		usecase.NewProductFind,
+	)
+
+	ProductCreateUsecaseSet = wire.NewSet(
+		singletonSet,
+		repositorySet,
+		usecase.NewProductCreate,
+	)
+
+	ProductUpdateUsecaseSet = wire.NewSet(
+		singletonSet,
+		repositorySet,
+		usecase.NewProductUpdate,
 	)
 )

@@ -6,13 +6,25 @@
 package registry
 
 import (
-	"pearshop_backend/app/usecase"
-
 	"github.com/google/wire"
+
+	"pearshop_backend/app/usecase"
 )
 
 func InjectedProductFindUsecase() usecase.ProductFind {
 	wire.Build(ProductFindUsecaseSet)
+
+	return nil
+}
+
+func InjectedProductCreateUsecase() usecase.ProductCreate {
+	wire.Build(ProductCreateUsecaseSet)
+
+	return nil
+}
+
+func InjectedProductUpdateUsecase() usecase.ProductUpdate {
+	wire.Build(ProductUpdateUsecaseSet)
 
 	return nil
 }

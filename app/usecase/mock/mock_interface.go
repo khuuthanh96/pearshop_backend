@@ -6,11 +6,12 @@ package mock
 
 import (
 	context "context"
-	entity "pearshop_backend/app/domain/entity"
-	dto "pearshop_backend/app/usecase/dto"
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
+
+	entity "pearshop_backend/app/domain/entity"
+	dto "pearshop_backend/app/usecase/dto"
 )
 
 // MockProductFind is a mock of ProductFind interface.
@@ -37,7 +38,7 @@ func (m *MockProductFind) EXPECT() *MockProductFindMockRecorder {
 }
 
 // Execute mocks base method.
-func (m *MockProductFind) Execute(ctx context.Context, req dto.ProductFindRequest, paging entity.Paging) ([]entity.Product, error) {
+func (m *MockProductFind) Execute(ctx context.Context, req dto.ProductFindRequest, paging entity.IPaging) ([]entity.Product, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Execute", ctx, req, paging)
 	ret0, _ := ret[0].([]entity.Product)
@@ -113,7 +114,7 @@ func (m *MockProductCreate) EXPECT() *MockProductCreateMockRecorder {
 }
 
 // Execute mocks base method.
-func (m *MockProductCreate) Execute(ctx context.Context, userID, req dto.ProductSaveRequest) (entity.Product, error) {
+func (m *MockProductCreate) Execute(ctx context.Context, userID int, req dto.ProductSaveRequest) (entity.Product, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Execute", ctx, userID, req)
 	ret0, _ := ret[0].(entity.Product)

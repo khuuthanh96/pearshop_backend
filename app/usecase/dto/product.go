@@ -3,11 +3,11 @@ package dto
 type ProductFindRequest struct {
 	Name        *string
 	Description *string
-	Price       *int
+	Price       *float64
 }
 
 type ProductSaveRequest struct {
 	Name        string
 	Description string
-	Price       int
+	Price       float64
 }

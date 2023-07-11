@@ -1,0 +1,36 @@
+PagingRequest:
+  Size:
+    Code: "CODE_INVALID_PAGE_SIZE"
+    MessageByTag:
+      gte: "page size must be greater than or equal 1"
+      lte: "page size must be less than or equal 100"
+  Page:
+    Code: "CODE_INVALID_PAGE_NUMBER"
+    MessageByTag:
+      gte: "page number must be greater than or equal 1"
+
+ProductFindRequest:
+  Name:
+    Code: "CODE_PRODUCT_FIND_INVALID_NAME"
+    MessageByTag:
+      max: "name must not exceed 255 characters"
+  Description:
+    Code: "CODE_PRODUCT_FIND_INVALID_DESCRIPTION"
+    MessageByTag:
+      max: "description must not exceed 1000 characters"
+
+ProductSaveRequest:
+  Name:
+    Code: "CODE_PRODUCT_INVALID_NAME"
+    MessageByTag:
+      required: "name is required"
+      max: "name must not exceed 255 characters"
+  Description:
+    Code: "CODE_PRODUCT_INVALID_DESCRIPTION"
+    MessageByTag:
+      max: "description must not exceed 1000 characters"
+  Price:
+    Code: "CODE_PRODUCT_INVALID_PRICE"
+    MessageByTag:
+      gte: "price must equal or greater than 0"
+

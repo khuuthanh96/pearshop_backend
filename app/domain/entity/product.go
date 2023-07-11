@@ -6,7 +6,7 @@ type Product struct {
 	ID          int `gorm:"primaryKey"`
 	Name        string
 	Description string
-	Price       int
+	Price       float64
 
 	CreatedAt time.Time `gorm:"->"`
 	CreatedBy int
@@ -14,5 +14,5 @@ type Product struct {
 	UpdatedAt time.Time `gorm:"->"`
 	UpdatedBy int
 
-	DeletedAt time.Time
+	DeletedAt *time.Time
 }

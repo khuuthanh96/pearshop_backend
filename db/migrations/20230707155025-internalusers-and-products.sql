@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `products`
 	`id`	INT AUTO_INCREMENT PRIMARY KEY,
 	`name`	VARCHAR(255) NOT NULL,
 	`price`	DOUBLE DEFAULT 0,
-	`description`	VARCHAR(1000) NOT NULL,
+	`description`	VARCHAR(1000) NOT NULL DEFAULT '',
 	`created_by`	INT NOT NULL,
 	`updated_by`	INT NOT NULL,
 

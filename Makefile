@@ -1,3 +1,5 @@
+SRC_PATH:= ${PWD}
+
 ## Developing jobs
 prepare:
 	@go install github.com/swaggo/swag/cmd/swag@latest
@@ -24,4 +26,22 @@ migrate-%:
 
 
 gen:
-	 go generate ./...
+	## Go generate
+	go generate ./...
+	## Swagger generate
+	@swag init -g app/delivery/http/routes/routes.go -o app/delivery/http/docs --exclude pkg,db,deployment,scripts,vendor
+	@./scripts/gci.sh
+
+
+mod:
+	@go mod tidy
+	@go mod vendor
+
+gci:
+	scripts/gci.sh
+
+up:
+	@go run ${SRC_PATH}/cmd/server/...	
+
+test:
+	@go test -cover ./...

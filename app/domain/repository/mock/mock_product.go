@@ -6,11 +6,12 @@ package mock
 
 import (
 	context "context"
-	entity "pearshop_backend/app/domain/entity"
-	repository "pearshop_backend/app/domain/repository"
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
+
+	entity "pearshop_backend/app/domain/entity"
+	repository "pearshop_backend/app/domain/repository"
 )
 
 // MockProduct is a mock of Product interface.
@@ -36,6 +37,18 @@ func (m *MockProduct) EXPECT() *MockProductMockRecorder {
 	return m.recorder
 }
 
+// AssignTx mocks base method.
+func (m *MockProduct) AssignTx(tx repository.TransactionManager) {
+	m.ctrl.T.Helper()
+	m.ctrl.Call(m, "AssignTx", tx)
+}
+
+// AssignTx indicates an expected call of AssignTx.
+func (mr *MockProductMockRecorder) AssignTx(tx interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AssignTx", reflect.TypeOf((*MockProduct)(nil).AssignTx), tx)
+}
+
 // Create mocks base method.
 func (m *MockProduct) Create(ctx context.Context, obj *entity.Product) error {
 	m.ctrl.T.Helper()
@@ -51,7 +64,7 @@ func (mr *MockProductMockRecorder) Create(ctx, obj interface{}) *gomock.Call {
 }
 
 // Find mocks base method.
-func (m *MockProduct) Find(ctx context.Context, spec repository.ISpecs, paging entity.Paging) ([]entity.Product, error) {
+func (m *MockProduct) Find(ctx context.Context, spec repository.ISpecs, paging entity.IPaging) ([]entity.Product, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Find", ctx, spec, paging)
 	ret0, _ := ret[0].([]entity.Product)

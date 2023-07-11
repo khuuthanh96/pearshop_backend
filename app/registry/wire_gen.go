@@ -10,6 +10,7 @@ import (
 	"pearshop_backend/app/external/storage/mysql"
 	"pearshop_backend/app/usecase"
 	"pearshop_backend/pkg/gormutil"
+	"pearshop_backend/pkg/hashid"
 )
 
 // Injectors from wire.go:
@@ -19,4 +20,19 @@ func InjectedProductFindUsecase() usecase.ProductFind {
 	product := mysql.NewProductRepository(db)
 	productFind := usecase.NewProductFind(product)
 	return productFind
+}
+
+func InjectedProductCreateUsecase() usecase.ProductCreate {
+	db := gormutil.GetDB()
+	product := mysql.NewProductRepository(db)
+	productCreate := usecase.NewProductCreate(product)
+	return productCreate
+}
+
+func InjectedProductUpdateUsecase() usecase.ProductUpdate {
+	db := gormutil.GetDB()
+	product := mysql.NewProductRepository(db)
+	idHasher := hashid.GetIDHasher()
+	productUpdate := usecase.NewProductUpdate(product, idHasher)
+	return productUpdate
 }

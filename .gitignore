@@ -1,5 +1,6 @@
 .sqllsrc.json
 
 pearshop_backend
-tools
 vendor
+
+app/config/config.yaml
