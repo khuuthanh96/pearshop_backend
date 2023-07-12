@@ -26,6 +26,8 @@ Project has 3 main layer:
 
 Libraries used:
 * Gin: Http web framework.
-* Golang-migrate: migrate database version.
+* Sql-migrate: Migrate database version.
 * Gomock: Generates mock database for testing api.
-
+* Google/Wire: Generates dependency injection for use-cases.
+* Swaggo: Generates api docs
+* Go-validator: Validates request payload with custom error messages
